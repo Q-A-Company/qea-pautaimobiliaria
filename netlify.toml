@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Garante que rotas do React Router (/admin, /tv, /login) funcionem
+# corretamente após reload direto na Netlify (SPA fallback).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

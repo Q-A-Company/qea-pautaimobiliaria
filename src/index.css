@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ink-950 text-paper font-body antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid #8f0403;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Inter não é uma fonte "black"/poster por padrão — reforça o peso
+     onde antes usávamos uma display font mais pesada, mantendo o
+     mesmo nome de utilitário (font-display) em todo o projeto. */
+  .font-display {
+    font-weight: 900;
+    letter-spacing: -0.015em;
+  }
+
+  .flip-card {
+    perspective: 800px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tamanho do nome do corretor da vez na TV, sem usar clamp() — TVs
+   antigas (ex.: navegadores Samsung Tizen mais velhos) não suportam a
+   função clamp() em font-size, o que fazia o texto cair para o tamanho
+   padrão do navegador (pequeno). Media queries simples são suportadas
+   praticamente em qualquer navegador, inclusive esses. */
+.tv-broker-name {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+@media (min-width: 640px) {
+  .tv-broker-name {
+    font-size: 5.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .tv-broker-name {
+    font-size: 7.5rem;
+  }
+}
+@media (min-width: 1536px) {
+  .tv-broker-name {
+    font-size: 9.5rem;
+  }
+}
